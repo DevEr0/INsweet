@@ -133,11 +133,27 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   100%{transform:rotate(360deg) translateX(135px) rotate(-360deg);}
 }
 
-.hero-float-card{position:absolute;bottom:40px;left:20px;background:white;border-radius:16px;padding:16px 20px;box-shadow:0 12px 40px rgba(38,32,28,0.14);min-width:190px;z-index:2;}
+.hero-float-card{position:absolute;bottom:10px;left:20px;background:white;border-radius:16px;padding:16px 20px;box-shadow:0 12px 40px rgba(38,32,28,0.14);min-width:190px;z-index:2;}
 .hero-float-card .fc-label{font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
 .hero-float-card .fc-val{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:500;color:var(--warm-dark);}
 .hero-float-card .fc-sub{font-size:0.72rem;color:var(--muted);margin-top:2px;}
-.hero-float-tag{position:absolute;top:32px;right:20px;background:var(--rose);color:white;padding:8px 16px;border-radius:50px;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;z-index:2;animation:tagBounce 3s ease-in-out infinite;}
+/* Hero float tag - positioned more to the left */
+.hero-float-tag {
+  position: absolute;
+  top: 32px;
+  left: 30%;           /* Moved more to the left */
+  background: var(--rose);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  z-index: 2;
+  animation: tagBounce 3s ease-in-out infinite;
+  box-shadow: 0 8px 25px rgba(201,122,88,0.25);
+  white-space: nowrap;
+}
 @keyframes tagBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
 
 /* ── DECORATIVE ── */
@@ -476,12 +492,7 @@ footer{background:#1C1714;padding:0 6vw;}
       </div>
     </div>
 
-    <div class="hero-float-card">
-      <div class="fc-label">Պատրաստ առաքման</div>
-      <div class="fc-val">Այսօրվա Հատուկ Առաջարկ</div>
-      <div class="fc-sub">Թարմ թխած · Պատվիրեք հիմա</div>
-    </div>
-    <div class="hero-float-tag">✦ Անհատական Պատվեր</div>
+ 
   </div>
 </section>
 
