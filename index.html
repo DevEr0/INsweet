@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INsweet — Desserts & Cakes Delivery · Yerevan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FAF8F3;
+  --cream2: #F5F0E8;
+  --blush: #EFD8CC;
+  --blush2: #E8C9B8;
+  --rose: #C97A58;
+  --rose-dark: #A85E3E;
+  --sage: #8FA882;
+  --sage-light: #C8D8C0;
+  --sage-bg: #EBF0E7;
+  --warm-dark: #26201C;
+  --mid: #6B4F40;
+  --muted: #A08070;
+  --card: #FFFCF7;
+  --border: rgba(180,140,115,0.18);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--warm-dark);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 5vw;
+  background:rgba(250,248,243,0.93);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:500;color:var(--warm-dark);text-decoration:none;letter-spacing:0.02em;}
+.nav-logo em{font-style:italic;color:var(--rose);}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{text-decoration:none;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);transition:color 0.2s;}
+.nav-links a:hover{color:var(--rose);}
+.nav-cta{background:var(--rose);color:#fff;padding:10px 24px;border-radius:50px;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background 0.2s,transform 0.15s;}
+.nav-cta:hover{background:var(--rose-dark);transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--warm-dark);border-radius:2px;}
+.mob-nav{display:none;position:fixed;inset:0;background:var(--cream);z-index:199;flex-direction:column;align-items:center;justify-content:center;gap:28px;}
+.mob-nav.open{display:flex;}
+.mob-nav a{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;color:var(--warm-dark);text-decoration:none;transition:color 0.2s;}
+.mob-nav a:hover{color:var(--rose);}
+.mob-close{position:absolute;top:20px;right:5vw;font-size:1.6rem;background:none;border:none;cursor:pointer;color:var(--muted);}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;padding-top:70px;overflow:hidden;}
+.hero-left{padding:60px 5vw 60px 6vw;}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:var(--blush);color:var(--rose-dark);font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;padding:7px 16px;border-radius:50px;margin-bottom:28px;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,5.5vw,5.8rem);font-weight:400;line-height:1.02;letter-spacing:-0.02em;color:var(--warm-dark);margin-bottom:8px;}
+.hero h1 em{font-style:italic;color:var(--rose);}
+.hero-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,1.6vw,1.4rem);font-weight:300;font-style:italic;color:var(--muted);margin-bottom:24px;}
+.hero-desc{font-size:0.95rem;line-height:1.8;color:var(--mid);max-width:480px;margin-bottom:36px;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:44px;}
+.btn-dark{display:inline-flex;align-items:center;gap:9px;background:var(--warm-dark);color:#fff;padding:14px 28px;border-radius:50px;text-decoration:none;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;transition:background 0.2s,transform 0.15s;}
+.btn-dark:hover{background:var(--rose);transform:translateY(-2px);}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--blush2);color:var(--mid);padding:13px 24px;border-radius:50px;text-decoration:none;font-size:0.78rem;letter-spacing:0.08em;transition:all 0.2s;}
+.btn-outline:hover{border-color:var(--rose);color:var(--rose);}
+.hero-stats{display:flex;gap:32px;flex-wrap:wrap;}
+.hero-stat{border-left:2px solid var(--blush2);padding-left:16px;}
+.hero-stat strong{display:block;font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:500;color:var(--warm-dark);line-height:1;}
+.hero-stat span{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
+
+.hero-right{position:relative;height:100vh;min-height:600px;background:var(--blush);overflow:hidden;}
+.hero-img-zone{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.img-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(160deg,var(--blush) 0%,var(--blush2) 50%,var(--sage-light) 100%);cursor:pointer;position:relative;transition:opacity 0.2s;}
+.img-placeholder:hover{opacity:0.88;}
+.img-placeholder .ph-icon{font-size:3.5rem;opacity:0.35;}
+.img-placeholder .ph-text{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);opacity:0.65;}
+.img-placeholder input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.img-placeholder img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;}
+
+.hero-float-card{position:absolute;bottom:40px;left:0px;background:white;border-radius:16px;padding:16px 20px;box-shadow:0 12px 40px rgba(38,32,28,0.14);min-width:190px;z-index:2;}
+.hero-float-card .fc-label{font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.hero-float-card .fc-val{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:500;color:var(--warm-dark);}
+.hero-float-card .fc-sub{font-size:0.72rem;color:var(--muted);margin-top:2px;}
+.hero-float-tag{position:absolute;top:32px;right:20px;background:var(--rose);color:white;padding:8px 16px;border-radius:50px;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;z-index:2;}
+
+/* ── MARQUEE ── */
+.marquee-wrap{overflow:hidden;background:var(--warm-dark);padding:13px 0;}
+.marquee-track{display:flex;animation:marquee 28s linear infinite;width:max-content;}
+.marquee-item{display:inline-flex;align-items:center;gap:14px;padding:0 24px;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(239,216,204,0.7);white-space:nowrap;}
+.msep{color:var(--rose);font-size:0.55rem;}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SECTIONS ── */
+section{padding:96px 6vw;}
+.sec-label{display:inline-flex;align-items:center;gap:10px;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rose);margin-bottom:14px;}
+.sec-label::before{content:'';display:block;width:28px;height:1px;background:var(--rose);}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:400;line-height:1.12;color:var(--warm-dark);margin-bottom:14px;}
+.sec-title em{font-style:italic;color:var(--rose);}
+.sec-sub{font-size:0.92rem;line-height:1.82;color:var(--muted);max-width:520px;}
+
+/* ── ABOUT ── */
+#about{background:var(--card);border-top:1px solid var(--border);}
+.about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.about-mosaic{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:220px 160px;gap:12px;}
+.mosaic-cell{border-radius:16px;overflow:hidden;position:relative;background:var(--blush);cursor:pointer;}
+.mosaic-cell:first-child{grid-column:1/-1;border-radius:20px;}
+.mc-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--blush) 0%,var(--sage-light) 100%);transition:opacity 0.2s;}
+.mc-ph:hover{opacity:0.82;}
+.mc-ph .ph-icon{font-size:2rem;opacity:0.3;}
+.mc-ph .ph-text{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);opacity:0.55;}
+.mc-ph input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;}
+.mc-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;}
+
+.about-text .sec-sub{margin-bottom:20px;}
+.about-richtext{font-size:0.9rem;line-height:1.88;color:var(--mid);margin-bottom:18px;}
+.about-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+.about-pill{background:var(--sage-bg);color:var(--sage);border:1px solid var(--sage-light);padding:7px 16px;border-radius:50px;font-size:0.74rem;letter-spacing:0.06em;}
+.about-feats{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.about-feat{background:var(--cream);border:1px solid var(--border);border-radius:14px;padding:18px 16px;transition:border-color 0.2s,transform 0.2s;}
+.about-feat:hover{border-color:var(--blush2);transform:translateY(-2px);}
+.about-feat .af-icon{font-size:1.4rem;margin-bottom:8px;}
+.about-feat h4{font-size:0.82rem;color:var(--warm-dark);margin-bottom:5px;letter-spacing:0.02em;}
+.about-feat p{font-size:0.74rem;line-height:1.6;color:var(--muted);}
+
+/* ── NUMBERS ── */
+.exp-strip{background:var(--warm-dark);padding:72px 6vw;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;}
+.exp-item{padding:32px 24px;border-right:1px solid rgba(255,255,255,0.07);transition:background 0.2s;}
+.exp-item:last-child{border-right:none;}
+.exp-item:hover{background:rgba(255,255,255,0.03);}
+.exp-num{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:300;color:var(--blush);line-height:1;margin-bottom:10px;}
+.exp-num span{font-size:1.6rem;}
+.exp-title{font-size:0.76rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:8px;}
+.exp-desc{font-size:0.76rem;line-height:1.7;color:rgba(255,255,255,0.35);}
+
+/* ── MENU ── */
+#menu{background:var(--cream2);}
+.menu-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;gap:20px;flex-wrap:wrap;}
+.menu-filter{display:flex;gap:8px;flex-wrap:wrap;}
+.mf-btn{background:white;border:1.5px solid var(--border);color:var(--muted);padding:8px 18px;border-radius:50px;font-size:0.72rem;letter-spacing:0.08em;cursor:pointer;transition:all 0.2s;font-family:'Jost',sans-serif;}
+.mf-btn.active,.mf-btn:hover{background:var(--rose);border-color:var(--rose);color:white;}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.menu-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;}
+.menu-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(38,32,28,0.09);}
+.menu-card.featured{grid-column:span 2;}
+
+.mc-img{position:relative;height:200px;overflow:hidden;background:var(--blush);cursor:pointer;}
+.menu-card.featured .mc-img{height:260px;}
+.mc-img-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;transition:opacity 0.2s;}
+.mc-img-ph:hover{opacity:0.8;}
+.mc-img-ph .ph-big{font-size:3rem;opacity:0.22;}
+.mc-img-ph .ph-sm{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);opacity:0.5;}
+.mc-img-ph input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;}
+.mc-img-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;}
+.mc-img img.placed{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
+.menu-card:hover .mc-img img.placed{transform:scale(1.04);}
+.mc-badge{position:absolute;top:14px;left:14px;background:white;color:var(--mid);font-size:0.64rem;letter-spacing:0.12em;text-transform:uppercase;padding:5px 12px;border-radius:50px;box-shadow:0 2px 12px rgba(0,0,0,0.08);}
+.mc-badge.feat{background:var(--rose);color:white;}
+
+.mc-body{padding:20px 18px 22px;}
+.mc-name{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;color:var(--warm-dark);margin-bottom:6px;}
+.menu-card.featured .mc-name{font-size:1.55rem;}
+.mc-desc{font-size:0.79rem;line-height:1.72;color:var(--muted);margin-bottom:14px;}
+.mc-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.mc-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.mc-tag{background:var(--sage-bg);color:var(--sage);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border-radius:50px;}
+.mc-order{display:inline-flex;align-items:center;gap:5px;color:var(--rose);font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(201,122,88,0.3);padding-bottom:1px;transition:border-color 0.2s;}
+.mc-order:hover{border-color:var(--rose);}
+
+.menu-note{margin-top:36px;background:var(--blush);border:1px solid var(--blush2);border-radius:16px;padding:24px 28px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:space-between;}
+.menu-note p{font-size:0.87rem;line-height:1.72;color:var(--mid);max-width:540px;}
+.menu-note p strong{color:var(--warm-dark);}
+
+/* ── ORDER ── */
+#order{background:var(--card);}
+.order-layout{display:grid;grid-template-columns:0.9fr 1.1fr;gap:80px;align-items:start;}
+.order-steps-list{display:flex;flex-direction:column;}
+.order-step{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid var(--border);}
+.order-step:last-child{border-bottom:none;}
+.os-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--blush2);line-height:1;width:44px;flex-shrink:0;text-align:right;padding-top:2px;}
+.os-body h4{font-size:0.88rem;font-weight:500;color:var(--warm-dark);margin-bottom:5px;}
+.os-body p{font-size:0.79rem;line-height:1.72;color:var(--muted);}
+
+.order-right{background:linear-gradient(150deg,var(--blush) 0%,var(--sage-bg) 100%);border-radius:24px;padding:40px 36px;border:1px solid var(--border);}
+.order-right h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--warm-dark);margin-bottom:8px;}
+.order-right > p{font-size:0.84rem;line-height:1.8;color:var(--mid);margin-bottom:24px;}
+.order-btns{display:flex;flex-direction:column;gap:12px;}
+.ocb{display:flex;align-items:center;gap:14px;background:white;border:1px solid var(--border);border-radius:14px;padding:16px 18px;text-decoration:none;transition:border-color 0.2s,transform 0.15s,box-shadow 0.2s;}
+.ocb:hover{border-color:var(--rose);transform:translateY(-1px);box-shadow:0 8px 24px rgba(38,32,28,0.08);}
+.ocb-icon{width:40px;height:40px;border-radius:10px;background:var(--blush);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.ocb-text strong{display:block;font-size:0.82rem;color:var(--warm-dark);margin-bottom:2px;}
+.ocb-text span{font-size:0.73rem;color:var(--muted);}
+.order-note{margin-top:18px;background:rgba(201,122,88,0.1);border-radius:12px;padding:14px 16px;font-size:0.77rem;line-height:1.6;color:var(--mid);}
+.order-note strong{color:var(--rose-dark);}
+
+/* ── TESTIMONIALS ── */
+#testimonials{background:var(--cream);}
+.t-header{text-align:center;max-width:520px;margin:0 auto 52px;}
+.t-header .sec-label{justify-content:center;}
+.t-header .sec-label::before{display:none;}
+.t-header .sec-sub{margin:0 auto;}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px 24px;transition:transform 0.3s,box-shadow 0.3s;}
+.tcard:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(38,32,28,0.07);}
+.tcard-stars{color:var(--rose);font-size:0.85rem;letter-spacing:2px;margin-bottom:14px;}
+.tcard-text{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;font-style:italic;line-height:1.75;color:var(--warm-dark);margin-bottom:18px;}
+.tcard-author{display:flex;align-items:center;gap:12px;}
+.tcard-avatar{width:36px;height:36px;border-radius:50%;background:var(--blush);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.tcard-name{font-size:0.8rem;font-weight:500;color:var(--warm-dark);}
+.tcard-via{font-size:0.68rem;color:var(--muted);}
+
+/* ── CTA ── */
+.cta-band{background:linear-gradient(135deg,var(--blush) 0%,var(--sage-bg) 60%,var(--blush) 100%);padding:88px 6vw;text-align:center;}
+.cta-band h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.4rem);font-weight:400;color:var(--warm-dark);margin-bottom:14px;}
+.cta-band h2 em{font-style:italic;color:var(--rose);}
+.cta-band p{font-size:0.92rem;line-height:1.8;color:var(--mid);max-width:480px;margin:0 auto 36px;}
+.cta-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+
+/* ── CONTACT ── */
+#contact{background:var(--warm-dark);}
+#contact .sec-label{color:rgba(239,216,204,0.65);}
+#contact .sec-label::before{background:rgba(239,216,204,0.4);}
+#contact .sec-title{color:white;}
+#contact .sec-title em{color:var(--blush);}
+#contact .sec-sub{color:rgba(255,255,255,0.4);}
+.contact-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:start;margin-top:52px;}
+.contact-cards{display:flex;flex-direction:column;gap:12px;}
+.ccard{display:flex;align-items:flex-start;gap:16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:18px 20px;text-decoration:none;transition:background 0.2s;}
+.ccard:hover{background:rgba(255,255,255,0.09);}
+.ccard-icon{width:44px;height:44px;border-radius:12px;background:rgba(201,122,88,0.18);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.ccard-lbl{font-size:0.63rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(201,122,88,0.75);margin-bottom:4px;}
+.ccard-val{font-size:0.88rem;color:rgba(255,255,255,0.78);line-height:1.5;}
+.social-strip{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;}
+.soc-btn{display:inline-flex;align-items:center;gap:8px;border:1.5px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.5);padding:10px 18px;border-radius:50px;font-size:0.7rem;letter-spacing:0.08em;text-decoration:none;transition:all 0.2s;}
+.soc-btn:hover{background:var(--rose);border-color:var(--rose);color:white;}
+
+.map-box{border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);}
+.map-link-btn{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;background:rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.08);text-decoration:none;transition:background 0.2s;}
+.map-link-btn:hover{background:rgba(255,255,255,0.09);}
+.mlb-left{display:flex;align-items:center;gap:12px;}
+.mlb-icon{font-size:1.2rem;}
+.mlb-text strong{display:block;font-size:0.82rem;color:rgba(255,255,255,0.8);margin-bottom:2px;}
+.mlb-text span{font-size:0.7rem;color:rgba(255,255,255,0.38);}
+.mlb-arrow{color:var(--rose);font-size:1.2rem;}
+.map-static{width:100%;padding:36px 28px;background:linear-gradient(145deg,#2a2420 0%,#35292277 100%);display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;}
+.map-static .ms-pin{font-size:2.8rem;}
+.map-static .ms-addr{font-size:0.82rem;line-height:1.75;color:rgba(255,255,255,0.5);}
+.map-static .ms-open{display:inline-flex;align-items:center;gap:8px;margin-top:8px;background:var(--rose);color:white;padding:11px 22px;border-radius:50px;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;}
+.map-static .ms-open:hover{background:var(--rose-dark);}
+
+/* ── FOOTER ── */
+footer{background:#1C1714;padding:0 6vw;}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;padding:52px 0 44px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.ft-brand .nav-logo{font-size:1.5rem;color:rgba(255,255,255,0.7);}
+.ft-brand p{font-size:0.77rem;line-height:1.8;color:rgba(255,255,255,0.28);margin-top:12px;max-width:250px;}
+.ft-col h5{font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:16px;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.ft-col ul a{font-size:0.78rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;}
+.ft-col ul a:hover{color:rgba(255,255,255,0.8);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:16px;flex-wrap:wrap;}
+.footer-bottom span{font-size:0.7rem;color:rgba(255,255,255,0.2);letter-spacing:0.06em;}
+
+/* ── ANIMATIONS ── */
+.fade{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.fade.in{opacity:1;transform:none;}
+.fade-l{opacity:0;transform:translateX(-24px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.fade-l.in{opacity:1;transform:none;}
+.fade-r{opacity:0;transform:translateX(24px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.fade-r.in{opacity:1;transform:none;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1060px){
+  .menu-grid{grid-template-columns:1fr 1fr;}
+  .menu-card.featured{grid-column:span 1;}
+  .menu-card.featured .mc-img{height:200px;}
+  .exp-strip{grid-template-columns:1fr 1fr;}
+  .exp-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.06);}
+  .tgrid{grid-template-columns:1fr 1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:820px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{height:55vw;min-height:280px;}
+  .hero-left{padding-top:28px;}
+  .about-wrap{grid-template-columns:1fr;gap:40px;}
+  .order-layout{grid-template-columns:1fr;gap:40px;}
+  .contact-layout{grid-template-columns:1fr;gap:40px;}
+  .nav-links,.nav-cta{display:none;}
+  .hamburger{display:flex;}
+}
+@media(max-width:620px){
+  section{padding:68px 5vw;}
+  .menu-grid{grid-template-columns:1fr;}
+  .exp-strip{grid-template-columns:1fr 1fr;padding:48px 5vw;}
+  .tgrid{grid-template-columns:1fr;}
+  .about-mosaic{grid-template-rows:170px 120px;}
+  .about-feats{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;gap:32px;}
+  .hero-stats{gap:18px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">IN<em>sweet</em></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#order">Order</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:+37493275659" class="nav-cta">Order Now</a>
+  <button class="hamburger" onclick="openMob()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mob-nav" id="mobNav">
+  <button class="mob-close" onclick="closeMob()">✕</button>
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#menu" onclick="closeMob()">Menu</a>
+  <a href="#order" onclick="closeMob()">Order</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+  <a href="tel:+37493275659" style="color:var(--rose);font-size:1.6rem;">+374 93 275 659</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left fade-l">
+    <div class="hero-pill">✦ Desserts & Cakes Delivery · Yerevan</div>
+    <h1>Crafted with <em>love,</em><br>delivered fresh.</h1>
+    <p class="hero-tagline">French-inspired pastry for every occasion.</p>
+    <p class="hero-desc">From glossy fruit tarts to silky mousse cakes — INsweet brings the elegance of a Parisian patisserie straight to your door. Based in Arinj, baking for all of Yerevan.</p>
+    <div class="hero-actions">
+      <a href="tel:+37493275659" class="btn-dark">📞 Call to Order</a>
+      <a href="https://instagram.com/insweet.shop" target="_blank" class="btn-outline">📸 @insweet.shop</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>4K+</strong><span>Instagram Followers</span></div>
+      <div class="hero-stat"><strong>100+</strong><span>Menu Creations</span></div>
+      <div class="hero-stat"><strong>Yerevan</strong><span>Wide Delivery</span></div>
+    </div>
+  </div>
+  <div class="hero-right fade-r">
+    <div class="hero-img-zone">
+      <div class="img-placeholder" id="heroWrap">
+        <span class="ph-icon">🍰</span>
+        <span class="ph-text">Click to add your hero photo</span>
+        <input type="file" accept="image/*" onchange="swapImg(this,'heroWrap')">
+        <img alt="INsweet hero dessert">
+      </div>
+    </div>
+    <div class="hero-float-card">
+      <div class="fc-label">Ready for delivery</div>
+      <div class="fc-val">Today's Specials</div>
+      <div class="fc-sub">Fresh-baked · Order by DM or call</div>
+    </div>
+    <div class="hero-float-tag">✦ Made to Order</div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Strawberry Vanilla Tart <span class="msep">✦</span></span>
+    <span class="marquee-item">Sicilian Pistachio <span class="msep">✦</span></span>
+    <span class="marquee-item">Lemon Blueberry Tart <span class="msep">✦</span></span>
+    <span class="marquee-item">New York Cheesecake <span class="msep">✦</span></span>
+    <span class="marquee-item">Pistachio & Cherry <span class="msep">✦</span></span>
+    <span class="marquee-item">French Macarons <span class="msep">✦</span></span>
+    <span class="marquee-item">Mirror-Glaze Mousse Cakes <span class="msep">✦</span></span>
+    <span class="marquee-item">Seasonal Fruit Tarts <span class="msep">✦</span></span>
+    <span class="marquee-item">Custom Birthday Cakes <span class="msep">✦</span></span>
+    <span class="marquee-item">Strawberry Vanilla Tart <span class="msep">✦</span></span>
+    <span class="marquee-item">Sicilian Pistachio <span class="msep">✦</span></span>
+    <span class="marquee-item">Lemon Blueberry Tart <span class="msep">✦</span></span>
+    <span class="marquee-item">New York Cheesecake <span class="msep">✦</span></span>
+    <span class="marquee-item">Pistachio & Cherry <span class="msep">✦</span></span>
+    <span class="marquee-item">French Macarons <span class="msep">✦</span></span>
+    <span class="marquee-item">Mirror-Glaze Mousse Cakes <span class="msep">✦</span></span>
+    <span class="marquee-item">Seasonal Fruit Tarts <span class="msep">✦</span></span>
+    <span class="marquee-item">Custom Birthday Cakes <span class="msep">✦</span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-wrap">
+    <div class="about-mosaic fade-l">
+      <div class="mosaic-cell">
+        <div class="mc-ph" id="aw0">
+          <span class="ph-icon">🎂</span><span class="ph-text">Add a photo</span>
+          <input type="file" accept="image/*" onchange="swapImg(this,'aw0')">
+          <img alt="">
+        </div>
+      </div>
+      <div class="mosaic-cell">
+        <div class="mc-ph" id="aw1">
+          <span class="ph-icon">🍓</span><span class="ph-text">Add a photo</span>
+          <input type="file" accept="image/*" onchange="swapImg(this,'aw1')">
+          <img alt="">
+        </div>
+      </div>
+      <div class="mosaic-cell">
+        <div class="mc-ph" id="aw2">
+          <span class="ph-icon">🍋</span><span class="ph-text">Add a photo</span>
+          <input type="file" accept="image/*" onchange="swapImg(this,'aw2')">
+          <img alt="">
+        </div>
+      </div>
+    </div>
+    <div class="about-text fade-r">
+      <span class="sec-label">Our Story</span>
+      <h2 class="sec-title">Born from a love of<br><em>beautiful</em> pastry.</h2>
+      <p class="sec-sub" style="margin-bottom:18px;">INsweet started with a simple belief: that everyone in Yerevan deserves the kind of dessert that makes you pause before taking a bite.</p>
+      <p class="about-richtext">Based in Arinj, Kotayk Marz, we bake every order fresh — from crisp butter-sablé tart shells to silky layered mousses with mirror-glaze finishes. Every recipe is rooted in French patisserie tradition, refined with seasonal ingredients and a genuine passion for flavour.</p>
+      <p class="about-richtext">We don't have a walk-in café. We work directly with our customers through Instagram, phone, and email — because ordering something this personal should feel personal too.</p>
+      <div class="about-pills">
+        <span class="about-pill">French Technique</span>
+        <span class="about-pill">Fresh Daily</span>
+        <span class="about-pill">Delivery-First</span>
+        <span class="about-pill">Custom Orders</span>
+        <span class="about-pill">Seasonal Ingredients</span>
+      </div>
+      <div class="about-feats">
+        <div class="about-feat"><div class="af-icon">🥐</div><h4>Sablé & Pâte Sucrée</h4><p>Buttery, crisp pastry shells — classic French technique, never soggy even after delivery.</p></div>
+        <div class="about-feat"><div class="af-icon">🌸</div><h4>No Artificial Colours</h4><p>All our colours come from natural fruit, pistachio paste, and berries — never dye.</p></div>
+        <div class="about-feat"><div class="af-icon">📦</div><h4>Delivery-Ready Packaging</h4><p>Every box is designed so your dessert arrives looking exactly as it left our kitchen.</p></div>
+        <div class="about-feat"><div class="af-icon">🎂</div><h4>Custom Celebration Cakes</h4><p>Birthdays, anniversaries, corporate events — we bake for every special occasion.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<div class="exp-strip">
+  <div class="exp-item fade"><div class="exp-num">100<span>+</span></div><div class="exp-title">Menu Items</div><div class="exp-desc">From individual tarts to full celebration cakes — a wide range crafted with care.</div></div>
+  <div class="exp-item fade" style="transition-delay:.1s"><div class="exp-num">4<span>K+</span></div><div class="exp-title">Happy Followers</div><div class="exp-desc">A growing Yerevan community of dessert lovers who come back again and again.</div></div>
+  <div class="exp-item fade" style="transition-delay:.2s"><div class="exp-num">0</div><div class="exp-title">Artificial Colours</div><div class="exp-desc">Every shade comes from natural ingredients — pistachio, berry, citrus, and cream.</div></div>
+  <div class="exp-item fade" style="transition-delay:.3s"><div class="exp-num">1<span>-day</span></div><div class="exp-title">Made to Order</div><div class="exp-desc">Nothing is pre-made or frozen. Everything is baked fresh for your specific order.</div></div>
+</div>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="menu-top fade">
+    <div>
+      <span class="sec-label">What We Make</span>
+      <h2 class="sec-title">A little taste of <em>Paris,</em><br>delivered to you.</h2>
+      <p class="sec-sub">Each piece made fresh to order, plated with care, and packed for perfect delivery.</p>
+    </div>
+    <div class="menu-filter">
+      <button class="mf-btn active" onclick="filterMenu(this,'all')">All</button>
+      <button class="mf-btn" onclick="filterMenu(this,'tart')">Tarts</button>
+      <button class="mf-btn" onclick="filterMenu(this,'cake')">Cakes</button>
+      <button class="mf-btn" onclick="filterMenu(this,'special')">Specials</button>
+    </div>
+  </div>
+
+  <div class="menu-grid">
+
+    <div class="menu-card featured fade" data-cat="tart">
+      <div class="mc-img" style="background:linear-gradient(135deg,#FDDDE6,#FDF0E8);" id="mcw1">
+        <div class="mc-img-ph"><span class="ph-big">🍓</span><span class="ph-sm">Click to add photo</span><input type="file" accept="image/*" onchange="swapMenuImg(this,'mcw1')"><img alt="Strawberry Vanilla Tart"></div>
+        <span class="mc-badge feat">★ Signature</span>
+      </div>
+      <div class="mc-body">
+        <div class="mc-name">Strawberry Vanilla Tart</div>
+        <p class="mc-desc">A classic sablé shell filled with silky vanilla crème pâtissière, topped with fresh seasonal strawberries and sealed with a glossy mirror glaze. Delicate, creamy, and unmistakably French.</p>
+        <div class="mc-footer"><div class="mc-tags"><span class="mc-tag">Tart</span><span class="mc-tag">Signature</span><span class="mc-tag">Seasonal</span></div><a href="tel:+37493275659" class="mc-order">Order →</a></div>
+      </div>
+    </div>
+
+    <div class="menu-card fade" data-cat="tart" style="transition-delay:.05s">
+      <div class="mc-img" style="background:linear-gradient(135deg,#D6EEC8,#EBF4E0);" id="mcw2">
+        <div class="mc-img-ph"><span class="ph-big">🟢</span><span class="ph-sm">Click to add photo</span><input type="file" accept="image/*" onchange="swapMenuImg(this,'mcw2')"><img alt="Sicilian Pistachio"></div>
+        <span class="mc-badge">House Favourite</span>
+      </div>
+      <div class="mc-body">
+        <div class="mc-name">Sicilian Pistachio Tart</div>
+        <p class="mc-desc">Rich, earthy pistachio cream in a crisp sablé shell — nutty, subtly sweet, and deeply satisfying. Inspired by Sicily's iconic green dessert tradition.</p>
+        <div class="mc-footer"><div class="mc-tags"><span class="mc-tag">Tart</span><span class="mc-tag">Nutty</span></div><a href="tel:+37493275659" class="mc-order">Order →</a></div>
+      </div>
+    </div>
+
+    <div class="menu-card fade" data-cat="tart" style="transition-delay:.1s">
+      <div class="mc-img" style="background:linear-gradient(135deg,#FFF5C0,#FFFAE0);" id="mcw3">
+        <div class="mc-img-ph"><span class="ph-big">🍋</span><span class="ph-sm">Click to add photo</span><input type="file" accept="image/*" onchange="swapMenuImg(this,'mcw3')"><img alt="Lemon Blueberry"></div>
+        <span class="mc-badge">Seasonal</span>
+      </div>
+      <div class="mc-body">
+        <div class="mc-name">Lemon Blueberry Tart</div>
+        <p class="mc-desc">Bright lemon curd balanced by plump blueberries — a perfectly tart-sweet combination that tastes like sunshine on a warm afternoon.</p>
+        <div class="mc-footer"><div class="mc-tags"><span class="mc-tag">Tart</span><span class="mc-tag">Citrus</span><span class="mc-tag">Fruity</span></div><a href="tel:+37493275659" class="mc-order">Order →</a></div>
+      </div>
+    </div>
+
+    <div class="menu-card fade" data-cat="tart" style="transition-delay:.1s">
+      <div class="mc-img" style="background:linear-gradient(135deg,#EDD5F8,#F5EAF9);" id="mcw4">
+        <div class="mc-img-ph"><span class="ph-big">🍒</span><span class="ph-sm">Click to add photo</span><input type="file" accept="image/*" onchange="swapMenuImg(this,'mcw4')"><img alt="Pistachio Cherry"></div>
+        <span class="mc-badge">Signature</span>
+      </div>
+      <div class="mc-body">
+        <div class="mc-name">Pistachio & Cherry Tart</div>
+        <p class="mc-desc">Pistachio frangipane meets the bold tartness of Morello cherries — a striking, flavourful contrast that makes every bite memorable.</p>
+        <div class="mc-footer"><div class="mc-tags"><span class="mc-tag">Tart</span><span class="mc-tag">Nutty</span><span class="mc-tag">Fruity</span></div><a href="tel:+37493275659" class="mc-order">Order →</a></div>
+      </div>
+    </div>
+
+    <div class="menu-card fade" data-cat="cake" style="transition-delay:.15s">
+      <div class="mc-img" style="background:linear-gradient(135deg,#F5E8D4,#FBF2E8);" id="mcw5">
+        <div class="mc-img-ph"><span class="ph-big">🎂</span><span class="ph-sm">Click to add photo</span><input type="file" accept="image/*" onchange="swapMenuImg(this,'mcw5')"><img alt="New York Cheesecake"></div>
+        <span class="mc-badge">Celebration</span>
+      </div>
+      <div class="mc-body">
+        <div class="mc-name">New York Cheesecake</div>
+        <p class="mc-desc">Dense, velvety, and impossibly creamy — our classic New York-style cheesecake on a buttery biscuit base. Perfect for celebrations, or just Tuesday.</p>
+        <div class="mc-footer"><div class="mc-tags"><span class="mc-tag">Cake</span><span class="mc-tag">Creamy</span><span class="mc-tag">Classic</span></div><a href="tel:+37493275659" class="mc-order">Order →</a></div>
+      </div>
+    </div>
+
+    <div class="menu-card fade" data-cat="cake" style="transition-delay:.2s">
+      <div class="mc-img" style="background:linear-gradient(135deg,#D2EAF5,#E8F4FB);" id="mcw6">
+        <div class="mc-img-ph"><span class="ph-big">🍥</span><span class="ph-sm">Click to add photo</span><input type="file" accept="image/*" onchange="swapMenuImg(this,'mcw6')"><img alt="Mousse Cake"></div>
+        <span class="mc-badge">Entremet</span>
+      </div>
+      <div class="mc-body">
+        <div class="mc-name">Mirror-Glaze Mousse Cake</div>
+        <p class="mc-desc">Light mousse layers on a delicate biscuit base, finished with a glossy mirror glaze that reflects like glass. As stunning to look at as to eat.</p>
+        <div class="mc-footer"><div class="mc-tags"><span class="mc-tag">Cake</span><span class="mc-tag">Entremet</span><span class="mc-tag">Elegant</span></div><a href="tel:+37493275659" class="mc-order">Order →</a></div>
+      </div>
+    </div>
+
+    <div class="menu-card fade" data-cat="special" style="transition-delay:.2s">
+      <div class="mc-img" style="background:linear-gradient(135deg,#F8E8D0,#FDF4E7);" id="mcw7">
+        <div class="mc-img-ph"><span class="ph-big">🥐</span><span class="ph-sm">Click to add photo</span><input type="file" accept="image/*" onchange="swapMenuImg(this,'mcw7')"><img alt="Macarons"></div>
+        <span class="mc-badge">French Classic</span>
+      </div>
+      <div class="mc-body">
+        <div class="mc-name">French Macarons</div>
+        <p class="mc-desc">Delicate almond meringue shells with a choice of seasonal fillings — ganache, buttercream, or fruit curd. Sold individually or as elegant gift boxes.</p>
+        <div class="mc-footer"><div class="mc-tags"><span class="mc-tag">Macaron</span><span class="mc-tag">Gift</span></div><a href="tel:+37493275659" class="mc-order">Order →</a></div>
+      </div>
+    </div>
+
+    <div class="menu-card fade" data-cat="special" style="transition-delay:.25s">
+      <div class="mc-img" style="background:linear-gradient(135deg,#FAD7D7,#FDEAEA);" id="mcw8">
+        <div class="mc-img-ph"><span class="ph-big">🎁</span><span class="ph-sm">Click to add photo</span><input type="file" accept="image/*" onchange="swapMenuImg(this,'mcw8')"><img alt="Custom Cake"></div>
+        <span class="mc-badge">Custom</span>
+      </div>
+      <div class="mc-body">
+        <div class="mc-name">Custom & Birthday Cakes</div>
+        <p class="mc-desc">Tell us the occasion, flavours, and size — we'll design and bake something entirely unique. Perfect for birthdays, weddings, and special celebrations.</p>
+        <div class="mc-footer"><div class="mc-tags"><span class="mc-tag">Custom</span><span class="mc-tag">Celebration</span></div><a href="tel:+37493275659" class="mc-order">Enquire →</a></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="menu-note fade">
+    <p><strong>Seasonal specials change regularly.</strong> Follow <a href="https://instagram.com/insweet.shop" target="_blank" style="color:var(--rose);">@insweet.shop</a> on Instagram to see what's available this week — and send a DM to place your order or ask about custom requests.</p>
+    <a href="https://instagram.com/insweet.shop" target="_blank" class="btn-dark" style="flex-shrink:0;white-space:nowrap;">View on Instagram →</a>
+  </div>
+</section>
+
+<!-- HOW TO ORDER -->
+<section id="order">
+  <div class="order-layout">
+    <div class="fade-l">
+      <span class="sec-label">How It Works</span>
+      <h2 class="sec-title">Ordering is <em>easy</em></h2>
+      <p class="sec-sub" style="margin-bottom:32px;">Four simple steps from first browse to your front door.</p>
+      <div class="order-steps-list">
+        <div class="order-step"><div class="os-num">01</div><div class="os-body"><h4>Browse & Choose</h4><p>Explore the menu here or check our Instagram @insweet.shop for full photos, seasonal specials, and custom cake inspiration.</p></div></div>
+        <div class="order-step"><div class="os-num">02</div><div class="os-body"><h4>Contact Us</h4><p>Call, email, or DM us on Instagram. Tell us what you'd like, your delivery date, and your address. We're quick to respond!</p></div></div>
+        <div class="order-step"><div class="os-num">03</div><div class="os-body"><h4>We Bake Fresh</h4><p>Your order is made fresh to order — no pre-baked stock, no shortcuts. We'll confirm your delivery window once everything is beautifully finished.</p></div></div>
+        <div class="order-step"><div class="os-num">04</div><div class="os-body"><h4>Delivered to Your Door</h4><p>We deliver across Yerevan. Your desserts arrive in beautiful, secure packaging — ready to eat, share, or gift.</p></div></div>
+      </div>
+    </div>
+    <div class="order-right fade-r">
+      <h3>Ready to order?</h3>
+      <p>Reach us through any channel below. For custom or large orders, we recommend contacting us 2–3 days in advance so we can give your order the care it deserves.</p>
+      <div class="order-btns">
+        <a href="tel:+37493275659" class="ocb"><div class="ocb-icon">📞</div><div class="ocb-text"><strong>+374 93 275 659</strong><span>Call or WhatsApp · Fastest response</span></div></a>
+        <a href="mailto:insweet.shop@gmail.com" class="ocb"><div class="ocb-icon">✉️</div><div class="ocb-text"><strong>insweet.shop@gmail.com</strong><span>Email · Great for custom & detailed orders</span></div></a>
+        <a href="https://instagram.com/insweet.shop" target="_blank" class="ocb"><div class="ocb-icon">📸</div><div class="ocb-text"><strong>@insweet.shop</strong><span>Instagram DM · Browse & order in one place</span></div></a>
+      </div>
+      <div class="order-note"><strong>Custom cakes & large orders:</strong> Please reach out 2–3 days ahead so we can prepare your order with the care it deserves.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="t-header fade">
+    <span class="sec-label">What People Say</span>
+    <h2 class="sec-title">Loved by <em>Yerevan</em></h2>
+    <p class="sec-sub">Real words from real customers — because the best recommendation is a happy bite.</p>
+  </div>
+  <div class="tgrid">
+    <div class="tcard fade"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"The pistachio tart was absolutely stunning — it looked like it came from a Paris patisserie. I ordered for a birthday and everyone was in awe."</p><div class="tcard-author"><div class="tcard-avatar">🌸</div><div><div class="tcard-name">Narine M.</div><div class="tcard-via">via Instagram</div></div></div></div>
+    <div class="tcard fade" style="transition-delay:.08s"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"I've ordered three times now and every time the desserts arrive perfectly packaged and taste incredible. The mousse cake is next level."</p><div class="tcard-author"><div class="tcard-avatar">☕</div><div><div class="tcard-name">Artur K.</div><div class="tcard-via">via Instagram</div></div></div></div>
+    <div class="tcard fade" style="transition-delay:.16s"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Ordered a custom birthday cake and they nailed it completely. Beautiful design, incredible flavour, delivered on time. Cannot recommend enough!"</p><div class="tcard-author"><div class="tcard-avatar">🎂</div><div><div class="tcard-name">Ani H.</div><div class="tcard-via">via Instagram</div></div></div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band fade">
+  <h2>Ready for something <em>sweet?</em></h2>
+  <p>Whether it's a spontaneous treat or a carefully planned celebration — INsweet is here to make it special. Order today and taste the difference.</p>
+  <div class="cta-btns">
+    <a href="tel:+37493275659" class="btn-dark">📞 Call to Order</a>
+    <a href="mailto:insweet.shop@gmail.com" class="btn-dark" style="background:var(--mid);">✉️ Email Us</a>
+    <a href="https://instagram.com/insweet.shop" target="_blank" class="btn-outline">📸 Instagram</a>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <span class="sec-label">Get In Touch</span>
+  <h2 class="sec-title">Find us, <em>reach us,</em> taste us.</h2>
+  <p class="sec-sub">Based in Arinj, Kotayk — delivering happiness across Yerevan. Reach out any time.</p>
+  <div class="contact-layout">
+    <div class="fade-l">
+      <div class="contact-cards">
+        <div class="ccard">
+          <div class="ccard-icon">📍</div>
+          <div><div class="ccard-lbl">Address</div><div class="ccard-val">Paruyr Sevak Street, Block 6, 7/1<br>Arinj (Arrinj), Kotayk Marz, Armenia</div></div>
+        </div>
+        <a href="tel:+37493275659" class="ccard">
+          <div class="ccard-icon">📞</div>
+          <div><div class="ccard-lbl">Phone</div><div class="ccard-val">+374 93 275 659</div></div>
+        </a>
+        <a href="mailto:insweet.shop@gmail.com" class="ccard">
+          <div class="ccard-icon">✉️</div>
+          <div><div class="ccard-lbl">Email</div><div class="ccard-val">insweet.shop@gmail.com</div></div>
+        </a>
+        <a href="https://instagram.com/insweet.shop" target="_blank" class="ccard">
+          <div class="ccard-icon">📸</div>
+          <div><div class="ccard-lbl">Instagram</div><div class="ccard-val">@insweet.shop · ~4K followers</div></div>
+        </a>
+      </div>
+      <div class="social-strip">
+        <a href="https://instagram.com/insweet.shop" target="_blank" class="soc-btn">📸 Instagram</a>
+        <a href="tel:+37493275659" class="soc-btn">📞 Call</a>
+        <a href="mailto:insweet.shop@gmail.com" class="soc-btn">✉️ Email</a>
+      </div>
+    </div>
+    <div class="map-box fade-r">
+      <!-- Opens Google Maps directly — no broken iframe -->
+      <a href="https://www.google.com/maps/search/Paruyr+Sevak+Street+Block+6+Arinj+Kotayk+Armenia/@40.2117,44.6069,15z" target="_blank" class="map-link-btn">
+        <div class="mlb-left">
+          <span class="mlb-icon">🗺️</span>
+          <div class="mlb-text">
+            <strong>Open in Google Maps</strong>
+            <span>Paruyr Sevak St, Block 6, 7/1 · Arinj, Kotayk</span>
+          </div>
+        </div>
+        <span class="mlb-arrow">↗</span>
+      </a>
+      <div class="map-static">
+        <span class="ms-pin">📍</span>
+        <p class="ms-addr">
+          <strong style="color:rgba(255,255,255,0.75);display:block;margin-bottom:6px;">INsweet · Arinj, Kotayk Marz</strong>
+          Paruyr Sevak Street, Block 6, 7/1<br>
+          Near Yerevan · Armenia<br><br>
+          We deliver across all of Yerevan.<br>
+          Pickup available by arrangement.
+        </p>
+        <a href="https://www.google.com/maps/search/Paruyr+Sevak+Street+Block+6+Arinj+Kotayk+Armenia/@40.2117,44.6069,15z" target="_blank" class="ms-open">📍 Get Directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="ft-brand">
+      <a href="#" class="nav-logo" style="color:rgba(255,255,255,0.7);">IN<em>sweet</em></a>
+      <p>French-inspired desserts & cakes delivered fresh across Yerevan. Based in Arinj, Kotayk Marz, Armenia.</p>
+    </div>
+    <div class="ft-col">
+      <h5>Navigate</h5>
+      <ul>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#order">How to Order</a></li>
+        <li><a href="#contact">Contact & Location</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="tel:+37493275659">+374 93 275 659</a></li>
+        <li><a href="mailto:insweet.shop@gmail.com">insweet.shop@gmail.com</a></li>
+        <li><a href="https://instagram.com/insweet.shop" target="_blank">@insweet.shop</a></li>
+        <li><a href="#contact">Arinj, Kotayk, Armenia</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 INsweet · All rights reserved</span>
+    <span>Desserts & Cakes Delivery · Yerevan, Armenia</span>
+    <a href="https://instagram.com/insweet.shop" target="_blank" style="color:rgba(255,255,255,0.22);font-size:0.7rem;text-decoration:none;">Instagram ↗</a>
+  </div>
+</footer>
+
+<script>
+// ─ Universal image swap: works for hero, mosaic, and menu cards
+function swapImg(input, wrapId) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const wrap = document.getElementById(wrapId);
+    const img = wrap.querySelector('img');
+    img.src = e.target.result;
+    img.style.display = 'block';
+    // hide placeholder text/icon but keep input accessible
+    wrap.querySelectorAll('.ph-icon, .ph-text').forEach(el => el.style.display = 'none');
+  };
+  reader.readAsDataURL(file);
+}
+
+// ─ Menu card image swap (placeholder div gets hidden, img shown)
+function swapMenuImg(input, wrapId) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const wrap = document.getElementById(wrapId);
+    const ph = wrap.querySelector('.mc-img-ph');
+    const img = ph.querySelector('img');
+    img.src = e.target.result;
+    img.style.display = 'block';
+    img.classList.add('placed');
+    ph.querySelectorAll('.ph-big, .ph-sm').forEach(el => el.style.display = 'none');
+  };
+  reader.readAsDataURL(file);
+}
+
+// ─ Menu filter
+function filterMenu(btn, cat) {
+  document.querySelectorAll('.mf-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.menu-card').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+  });
+}
+
+// ─ Mobile nav
+function openMob() { document.getElementById('mobNav').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeMob() { document.getElementById('mobNav').classList.remove('open'); document.body.style.overflow = ''; }
+
+// ─ Scroll animations
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fade, .fade-l, .fade-r').forEach(el => io.observe(el));
+
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.querySelectorAll('.hero .fade-l, .hero .fade-r').forEach((el, i) => {
+      setTimeout(() => el.classList.add('in'), i * 120);
+    });
+  }, 80);
+});
+</script>
+</body>
+</html>
